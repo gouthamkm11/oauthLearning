@@ -1,0 +1,26 @@
+{
+  "name": "oauth",
+  "version": "1.0.0",
+  "description": "Open Authentication",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "ejs": "*",
+    "express": "*",
+    "passport": "^0.4.0",
+    "passport-google-oauth20": "^1.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/goutty11/oauthLearning.git"
+  },
+  "author": "Goutham",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/goutty11/oauthLearning/issues"
+  },
+  "homepage": "https://github.com/goutty11/oauthLearning#readme"
+}

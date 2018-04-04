@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <style>
+        .form {
+            border: 5px solid black;
+            margin: 15px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <form action="/auth/normalLogin" class="form">
+        <table>
+            <tr><td>
+                <input type="text" name="uname">
+            </td></tr>
+            <tr><td>
+                <input type="text" name="uname">
+            </td></tr>
+            <tr><td>
+                <button>Login</button>
+            </td></tr>
+        </table>
+    </form>
+    <form class="form" action="/auth/google">
+        <button>Sign in with Google</button>
+    </form>
+</body>
+</html>
