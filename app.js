@@ -1,6 +1,7 @@
 var express = require('express');
 var ejs = require('ejs');
 var routes = require('./controllers/routes');
+var passportSetup = require('./config/passport.setup');
 
 var app = express();
 
