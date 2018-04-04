@@ -7,8 +7,12 @@ passport.use(new googleStrategy({
     callbackURL:'/auth/google/redirect/',
     clientID:keys.google.clientID,
     clientSecret:keys.google.clientSecret
-}, (accessToken, refreshToken, profile, done)=>{
-    //passport cb function
-    console.log(profile);
-})
+},
+    //This callback function will be trigerred once the callbackURL is fired
+    (accessToken, refreshToken, profile, done)=>{
+        //passport cb function
+        //console.log(profile);
+        console.log("Callback Function triggered");
+        console.log(profile);
+    })
 );

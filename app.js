@@ -2,13 +2,24 @@ var express = require('express');
 var ejs = require('ejs');
 var routes = require('./controllers/routes');
 var passportSetup = require('./config/passport.setup');
+var mongoose = require('mongoose');
+var connstr = require('./config/db.configuration');
+
 
 var app = express();
 
 //setting my default view engine
 app.set('view engine', 'ejs');
-//Route configuration
+
+//Routes initialization
 routes(app);
+
+//DB Initialization
+mongoose.connect(connstr.dbconfig, ()=>{
+    console.log('DB Connected');
+});
+
+
 
 //default routing
 app.get('/', (req,res)=>{
