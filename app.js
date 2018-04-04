@@ -15,10 +15,11 @@ app.set('view engine', 'ejs');
 routes(app);
 
 //DB Initialization
-mongoose.connect(connstr.dbconfig, ()=>{
+mongoose.connect(connstr.dbconfig.db);
+mongoose.connection.on('connected', (err)=>{
+    if (err) throw err;
     console.log('DB Connected');
-});
-
+})
 
 
 //default routing

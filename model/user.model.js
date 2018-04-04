@@ -10,6 +10,6 @@ var userSchema = new Schema({
 
 //We have to create a model
 //which will hold the collection of user records
-var User = mongoose.Model('users', userSchema);
+var User = mongoose.model('users', userSchema);
 
 module.exports = User;
