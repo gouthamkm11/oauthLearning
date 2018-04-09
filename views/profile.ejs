@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+    <style>
+        .inlineDiv {
+            border: 5px solid green;
+            height: 250px;
+            width: 250px;
+            margin: 10px;
+            padding: 5px;
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+    <div class="inlineDiv">
+        <img src='' alt="<%=user.googleID%>" height="250px" width="250px">
+    </div>
+    <div class="inlineDiv">
+        <p>Name <%=user.username%></p>
+    </div>
+</body>
+</html>
