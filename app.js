@@ -37,7 +37,7 @@ mongoose.connection.on('connected', (err)=>{
 
 //default routing
 app.get('/', (req,res)=>{
-    res.render('home');
+    res.render('login');
 })
 
 //Server listening ot port 3000

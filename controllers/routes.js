@@ -8,7 +8,7 @@ module.exports = function(app){
     //Middleware for user profile page
     var pageRoute = (req,res,next)=>{
         if(!req.user){
-            res.redirect('/profile/');
+            res.redirect('/profile');
         }
         else{
             next();
@@ -16,7 +16,11 @@ module.exports = function(app){
     }
 
     app.get('/profile', pageRoute, (req,res)=>{
-        res.render('profile', {user: req.user});
+        if(req.url != '/auth/login'){
+            res.render('profile', {user: req.user});
+        }else{
+            next();
+        }
     })
 
     app.get('/auth/login', (req,res)=> {
