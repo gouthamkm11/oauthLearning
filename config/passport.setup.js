@@ -3,6 +3,16 @@ var googleStrategy = require('passport-google-oauth20');
 var keys = require('./keys');
 var User = require('../model/user.model');
 
+passport.serializeUser((user,done)=>{
+    done(null,user.id);
+});
+
+passport.deserializeUser((id)=>{
+    User.findById(id).then((user)=>{
+        done(null,user);
+    })
+});
+
 passport.use(new googleStrategy({
     //options for strategy
     callbackURL:'/auth/google/redirect/',
@@ -15,6 +25,7 @@ passport.use(new googleStrategy({
         User.findOne({googleID:profile.id}).then((currentUser)=>{
             if(currentUser){
                 console.log(`User already exists: ${currentUser}`);
+                done(null, currentUser);
             }
             else{
                 new User({
@@ -22,6 +33,7 @@ passport.use(new googleStrategy({
                     googleID: profile.id
                 }).save().then((newUser)=>{
                     console.log(`New user has been added${newUser}`);
+                    done(null, newUser);
                 })
             }
         })
