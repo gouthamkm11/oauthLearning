@@ -5,7 +5,9 @@ var Schema = mongoose.Schema;
 //what fields and data type our each record should have
 var userSchema = new Schema({
     username: String,
-    googleID: String
+    googleID: String,
+    profilePic: String,
+    gender: String
 })
 
 //We have to create a model
