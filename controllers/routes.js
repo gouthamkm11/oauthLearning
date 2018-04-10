@@ -6,22 +6,6 @@ var passport = require('passport');
 module.exports = function(app){
 
     //Middleware for user profile page
-    var pageRoute = (req,res,next)=>{
-        if(!req.user){
-            res.redirect('/profile');
-        }
-        else{
-            next();
-        }
-    }
-
-    app.get('/profile', pageRoute, (req,res)=>{
-        if(req.url != '/auth/login'){
-            res.render('profile', {user: req.user});
-        }else{
-            next();
-        }
-    })
 
     app.get('/auth/login', (req,res)=> {
         res.render('login');
@@ -39,8 +23,13 @@ module.exports = function(app){
     //This callback route will get the code from google profile page to access the user profile data
     //Then this will trigger the callback function in passport.jsetups.js
     app.get('/auth/google/redirect', passport.authenticate('google'), (req,res)=>{
+        console.log(`In redirect req${req.user}`);
         res.redirect('/profile');
     }); 
+
+    app.get('/redirecting', (req,res)=>{
+        res.send(`${req.user}`);
+    })
 
     app.get('/auth/normalLogin', (req,res)=>{
         res.send('Login Successfull');
