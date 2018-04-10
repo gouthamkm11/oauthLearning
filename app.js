@@ -1,6 +1,7 @@
 var express = require('express');
 var ejs = require('ejs');
 var routes = require('./controllers/routes');
+var profileRoutes = require('./controllers/profileRoutes');
 var passportSetup = require('./config/passport.setup');
 var mongoose = require('mongoose');
 var connstr = require('./config/db.configuration');
@@ -14,18 +15,22 @@ var app = express();
 //setting my default view engine
 app.set('view engine', 'ejs');
 
-//Initialize Passport
-app.use(passport.initialize());
-app.use(passport.session());
-
 //set Cookie session
+//This cookie chunk should be placed before passport initialization
 app.use(cookieSession({
     maxAge: 24*60*60*1000,
     keys:[key.session.encrytedData]
 }));
 
+
+//Initialize Passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 //Routes initialization
 routes(app);
+profileRoutes(app);
 
 
 //DB Initialization
@@ -37,8 +42,9 @@ mongoose.connection.on('connected', (err)=>{
 
 //default routing
 app.get('/', (req,res)=>{
-    res.render('login');
+    res.render('home');
 })
+
 
 //Server listening ot port 3000
 app.listen(3000, ()=>{
